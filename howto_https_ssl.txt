@@ -1,0 +1,10 @@
+ssl request
+https://www.sslforfree.com
+
+90 days free
+
+1. use http methond for pki-validation
+2. validation downloaded /usr/share/nginx/cert/.well-known/
+3. cert & key downloaded /usr/ssl/zerossl/
+
+last install 17-june 2024

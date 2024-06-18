@@ -1,11 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import UdpView from '../views/UdpView.vue'
+import UdpdemoView from '../views/UdpdemoView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/udp',
+    name: 'udp',
+    component: UdpView
+  },
+  {
+    path: '/udpdemo',
+    name: 'udpdemo',
+    component: UdpdemoView
   },
   {
     path: '/about',
