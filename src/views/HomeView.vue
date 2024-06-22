@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/st-logo-blue-vertical.png">
+    <!--<img alt="Vue logo" src="../assets/st-logo-blue-vertical.png">-->
     <HelloWorld msg="Welcome to APL Test App"/>
   </div>
 </template>

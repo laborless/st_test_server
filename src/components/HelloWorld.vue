@@ -4,10 +4,16 @@
     <p>
       This is the service for testing Application Layer protocol
     </p>
-    <p>
+    <!--<p>
         ST87M01 : <a href="https://www.st.com/en/wireless-connectivity/st87m01.html" target="_blank">https://www.st.com/en/wireless-connectivity/st87m01.html</a><br>
         STMicroelectronics Github : <a href="https://github.com/STMicroelectronics" target='_blank'>https://github.com/STMicroelectronics</a><br>
         STMicroelectronics : <a href="https://www.st.com" target='_blank'>https://www.st.com</a>
+    </p>-->
+    <p>
+      <a>- Port 5000 : UDP Loopback</a><br>
+      <a>- Port 5001 : UDP&emsp;&emsp;&emsp;&emsp;&ensp;</a><br>
+      <a>- Port 3000 : TCP Loopback</a><br>
+      <a>- Port 3001 : TCP&emsp;&emsp;&emsp;&emsp;&ensp;</a>
     </p>
   </div>
 </template>
