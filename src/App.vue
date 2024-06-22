@@ -7,7 +7,7 @@
     <button type="submit" @click="signIn()">Sign In</button>
   </div>
   <div v-else align="right">
-    <a>Hello {{username}}!</a>
+    <a>Hello!</a>
     <a>&nbsp;</a>
     <button type="submit" @click="signOut()">Sign Out</button>
   </div>
@@ -53,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    this.getCookies()
+    this.verifySession()
   },
   methods: {
     async signIn () {
@@ -63,20 +63,21 @@ export default {
         const response = await fetch('https://' + window.location.hostname + '/api/auth/session', {
           method: 'POST',
           // mode: 'cors',
-          // credentials: 'include',
+          credentials: 'include',
           headers: header,
           body: JSON.stringify(body)
         })
         if (response.status === 200) {
           this.session = 1
           // console.log('login ok')
-          this.getCookies()
         } else {
           // console.log('login failed')
         }
       } catch (error) {
         // console.error('Fail to get page num')
       }
+      this.username = ''
+      this.password = ''
     },
     async signOut () {
       const header = { Accept: '*/*' }
@@ -84,21 +85,59 @@ export default {
         const response = await fetch('https://' + window.location.hostname + '/api/auth/session', {
           method: 'DELETE',
           // mode: 'cors',
-          // credentials: 'include',
+          credentials: 'include',
           headers: header
         })
         if (response.status === 200) {
           // console.log('logout ok')
         } else {
           // console.log('logout failed')
+          document.cookie += ';max-age=0'
+          document.cookie += ';max-age=0'
         }
       } catch (error) {
-        // console.error('Fail to get page num')
+        document.cookie += ';max-age=0'
+        document.cookie += ';max-age=0'
       }
       this.session = 0
     },
-    getCookies (name) {
-      console.log(document.cookie)
+    async refreshSession () {
+      const header = { Accept: '*/*' }
+      try {
+        const response = await fetch('https://' + window.location.hostname + '/api/auth/refresh', {
+          method: 'POST',
+          // mode: 'cors',
+          credentials: 'include',
+          headers: header
+        })
+        if (response.status === 200) {
+          this.session = 1
+        } else {
+          this.session = 0
+        }
+      } catch (error) {
+        this.session = 0
+      }
+    },
+    async verifySession () {
+      const header = { Accept: '*/*' }
+      try {
+        const response = await fetch('https://' + window.location.hostname + '/api/auth/protected', {
+          method: 'GET',
+          // mode: 'cors',
+          credentials: 'include',
+          headers: header
+        })
+        if (response.status === 200) {
+          this.session = 1
+        } else if (response.status === 401) {
+          this.refreshSession()
+        } else {
+          this.session = 0
+        }
+      } catch (error) {
+        this.session = 0
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-# st_test_server
+# j_test_server
 
 ## Project setup
 ```
