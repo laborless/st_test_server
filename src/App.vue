@@ -13,7 +13,8 @@
   </div>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/udp">UDP/TCP</router-link> |
+    <router-link to="/udp">UDP</router-link> |
+    <router-link to="/tcp">TCP</router-link> |
     <!--<router-link to="/udpdemo">UDP DEMO</router-link> |-->
     <router-link to="/about">About</router-link>
   </nav>

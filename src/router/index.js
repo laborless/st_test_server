@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UdpView from '../views/UdpView.vue'
+import TcpView from '../views/TcpView.vue'
 // import UdpdemoView from '../views/UdpdemoView.vue'
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/udp',
     name: 'udp',
     component: UdpView
+  },
+  {
+    path: '/tcp',
+    name: 'tcp',
+    component: TcpView
   },
   // {
   //   path: '/udpdemo',
