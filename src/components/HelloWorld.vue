@@ -13,7 +13,8 @@
       <a>- Port 5000 : UDP Loopback</a><br>
       <a>- Port 5001 : UDP&emsp;&emsp;&emsp;&emsp;&ensp;</a><br>
       <a>- Port 3000 : TCP Loopback</a><br>
-      <a>- Port 3001 : TCP&emsp;&emsp;&emsp;&emsp;&ensp;</a>
+      <a>- Port 3001 : TCP&emsp;&emsp;&emsp;&emsp;&ensp;</a><br>
+      <a>- Port 5683 : COAP&emsp;&emsp;&emsp;&emsp;</a>
     </p>
   </div>
 </template>
