@@ -1,0 +1,27 @@
+<Free domain>
+https://내도메인.한국
+90 days free
+
+
+<free cert>
+https://certbot.eff.org/instructions?ws=nginx&os=snap
+https://letsencrypt.org/
+
+[certbot installat7ion] - done
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+[get certificate]
+sudo certbot certonly --nginx
+
+[nginx configuration]
+1. open /etc/nginx/nginx.conf
+2. modify ssl_certificate, ssl_certificate_key fields
+3. restart nginx sudo systemctl restart nginx
+
+[Test automatic renewal]
+sudo certbot renew --dry-run
+
+last install 21-feb 2052
+validation with HTTP when current cert is expired, uncomment nginx configuration in /etc/nginx/nginx.conf
+

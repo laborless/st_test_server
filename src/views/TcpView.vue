@@ -4,7 +4,7 @@
     <a><strong>Please Sign In</strong></a>
   </div>
   <div v-else>
-    <p style="text-align: right; margin-right: 20px;"><a href="https://193.122.103.95/api/tcpecho/db" download><strong>Save DB💾</strong></a></p>
+    <p style="text-align: right; margin-right: 20px;"><a href="#" @click.prevent="downloadDB"><strong>Save DB💾</strong></a></p>
     <div class="Wrapper"></div>
     <div>
       <p><strong>Page: {{currPage}}</strong></p>
@@ -103,10 +103,48 @@ export default {
         } else {
           this.$root.session = 0
         }
-        this.records = await response.json()
-        this.currPage = num + 1
       } catch (error) {
         // console.error('Fail to get records')
+      }
+    },
+    async downloadDB () {
+      try {
+        const response = await fetch('https://' + window.location.hostname + '/api/tcpecho/db', {
+          // mode: 'cors',
+          credentials: 'include'
+        })
+        if (response.status === 200) {
+          const blob = await response.blob()
+          const url = window.URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.style.display = 'none'
+          a.href = url
+          a.download = 'tcpecho_db'
+          document.body.appendChild(a)
+          a.click()
+          window.URL.revokeObjectURL(url)
+        } else if (response.status === 401) {
+          await this.$root.refreshSession()
+          if (this.$root.session === 1) {
+            const response = await fetch('https://' + window.location.hostname + '/api/tcpecho/db', {
+              // mode: 'cors',
+              credentials: 'include'
+            })
+            const blob = await response.blob()
+            const url = window.URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.style.display = 'none'
+            a.href = url
+            a.download = 'tcpecho_db'
+            document.body.appendChild(a)
+            a.click()
+            window.URL.revokeObjectURL(url)
+          }
+        } else {
+          this.$root.session = 0
+        }
+      } catch (error) {
+        // console.error('Fail to download DB')
       }
     }
   },
