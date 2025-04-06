@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+howto_release.txt
+howto_https_ssl.txt
+howto_https_ssl_with_certbot.txt
 
 # local env files
 .env.local
